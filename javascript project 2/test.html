@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+    <style>
+        #search-bar {
+            width:300px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        #country-list{
+            list-style: none;
+        }
+    </style>
+    </body>
+
+    <div>
+        <select id="countries">
+            <option value="India" >India</option>
+            <option value="Germany" >Germany</option>
+            <option value="Sweden" >Sweden</option>
+            <option value="Nether lands" >Nether lands</option>
+            <option value="Singapore" >Singpore</option>
+            <option value="Japan" >Japan</option>
+            <option value="Span" >Span</option>
+            <option value="United states" >United states</option>
+            <option value="Norway" >Norway</option>
+            <option value="Newyork" >Newyork</option>
+            <option value="Austrlia" >Austrlia</option>
+            <option value="Denmark" >Denmark</option>
+            <option value="China" >China</option>
+            <option value="Canada">canada</option>
+        </select>
+        <input type="text" id="demo" name="country" readonly style="width:144px;">
+    </div>
+
+    <input type="text" id="search-bar" placeholder="serach for a country" oninput="updateList()">
+    <ul id="country-list">
+        <li>India</li>
+        <li>Germany</li>
+        <li>Sweden</li>
+        <li>Netherlands</li>
+        <li>Singapore</li>
+        <li>Japan</li>
+        <li>Span</li>
+        <li>United states</li>
+        <li>Norway</li>
+        <li>Newyork</li>
+        <li>Austrlia</li>
+        <li>Denmark</li>
+        <li>china</li>
+        <li>canada</li>
+    </ul>
+    <script>
+        document.getElementById("countries").onchange = function () {
+            document.getElementsById("demo").value=this.value;
+        }
+
+        var searchBar = document.getElementById("search-bar");
+        var countryList = document.getElementById("country-list");
+
+        var countries = [
+            "India",
+            "Germany",
+            "Sweden",
+            "Netherlands",
+            "Singapore",
+            "Japan",
+            "Span",
+            "United states",
+            "Norway",
+            "Newyork",
+            "Austrlia",
+            "Denmark",
+            "China",
+            "canada",
+        ];
+    
+        function updateList() {
+            var searchValue =searchBar.value.toLowerCase();
+            countryList.innerHTML =""
+            for(var i = 0; i < countries.length; i++) {
+                var country = countries[i].toLowerCase();
+
+                if (country.includes(searchValue)) {
+                    var li = document.createElement("li");
+                    li.textContent = countries[i];
+                    countryList.appendChild(li);
+                }
+            }
+        }
+    </script>
+    </body>
+</html>
